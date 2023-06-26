@@ -71,38 +71,3 @@ class RowPrinter:
   
 stream = df1.writeStream.foreach(RowPrinter()).outputMode("append").start()
 
-# COMMAND ----------
-
-# # write stream to kenesis 
-
-# import boto3
-# import json
-# from pyspark.sql.functions import col, lit
-# from pyspark.sql.types import StructType, StructField, StringType
-# from pyspark.sql.types import MapType, StringType
-# from pyspark.sql.functions import split, udf
-# from pyspark.sql.window import *
-
-
-# spark = SparkSession.builder.getOrCreate()
-
-# def write_to_kinesis(row: Row):
-    
-#   STREAM_NAME: str = "hk-uber-stream1"
-#   REGION_NAME = "us-east-1"
-#   aws_access_key_id = 'AKIA6EW47MOKDA2GXE7A'
-#   aws_secret_key = '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'
-
-# # select just the json column using spark.sql row function  
-#   payload = json.dumps(row['json'])
-
-#   # Create an AWS client for the Kinesis service
-#   kinesis_client = boto3.client("kinesis", region_name=REGION_NAME,  aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_key)
-
-#   # Write the record to Kinesis
-#   response = kinesis_client.put_record(StreamName=STREAM_NAME, Data=payload, PartitionKey="partitionkey")
-    
-# # Use the foreach function to apply the write_to_kinesis function to each row in the DF
-# stream = df1.writeStream.foreach(write_to_kinesis).outputMode("append").start()
-
-
