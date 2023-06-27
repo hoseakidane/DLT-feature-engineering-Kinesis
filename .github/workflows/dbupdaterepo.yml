@@ -19,5 +19,5 @@ jobs:
         DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
         DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
       run: 
-        databricks repos update --branch main --path /Repos/databricks-feature-engineering-Kinesis-stream
+        databricks repos update --branch main --path /Repos/hosea.kidane@databricks.com/databricks-feature-engineering-Kinesis-stream
        
