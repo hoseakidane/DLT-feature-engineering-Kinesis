@@ -144,19 +144,6 @@ windowed_df3 = windowed_df2.select(col('Ride_end_time_stamp'), col('window'), co
 
 # COMMAND ----------
 
-# access_key = 'AKIA6EW47MOKDA2GXE7A'
-# secret_key = '4Bba0ENGCPPDLp6TIy8dgYG0OD5a+JmMSk7yX0m5'
-# encoded_secret_key = secret_key.replace("/", "%2F")
-# aws_bucket_name = "checkpointbucket2"
-# mount_name = "hk-uber-bucket-checkpoints8"
-
-# # TODO: if then statement for mounting 
-
-# directory = dbutils.fs.mount(f"s3a://{access_key}:{encoded_secret_key}@{aws_bucket_name}", f"/mnt/{mount_name}")
-
-
-# COMMAND ----------
-
 # MAGIC %sql
 # MAGIC DROP TABLE if exists uberdataset
 
