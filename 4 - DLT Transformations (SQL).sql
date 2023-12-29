@@ -1,14 +1,15 @@
 -- Databricks notebook source
 CREATE OR REFRESH STREAMING LIVE TABLE joined_streams
 (CONSTRAINT null_columns EXPECT (RideID IS NOT NULL and Ride_end_time_stamp IS NOT NULL and Ride_length_estimate_mins IS NOT NULL and City IS NOT NULL and Ride_start_time_stamp is not NULL) ON VIOLATION DROP ROW)
-PARTITIONED BY (City)
+PARTITIONED BY (City) 
 COMMENT "ride start and ride end streams joined & partitioned by city"
 TBLPROPERTIES ("myCompanyPipeline.quality" = "bronze")
 AS
 SELECT Ride_start_time_stamp, Ride_end_time_stamp, a.RideID, Ride_length_estimate_mins, City
   FROM STREAM(delta_stream1) AS a
   JOIN STREAM(delta_stream2) AS b
-      ON a.RideID = b.RideID;
+      ON a.RideID = b.RideID
+      AND Ride_end_time_stamp <= Ride_start_time_stamp + INTERVAL 1 HOUR;
 
 
 
