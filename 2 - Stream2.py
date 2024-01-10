@@ -4,6 +4,8 @@
 
 # COMMAND ----------
 
+# generate fake data for stream
+
 from datetime import timedelta, datetime
 import math
 import dbldatagen as dg
@@ -33,6 +35,8 @@ df1 = df.withColumn('json', create_map(lit('Ride_end_time_stamp'),col('Ride_end_
 # display(df1)
 
 # COMMAND ----------
+
+# write to kinesis with foreachbatch 
 
 spark = SparkSession.builder.getOrCreate()
 

@@ -17,4 +17,4 @@ fs.register_table(
   delta_table= "hosea.kinesis.average_bias_per_city_per_window_gold",
   primary_keys= "newest_timestamp",
   description='ETA bias per city updated every minute average of past 30 minutes'
-) 
+)

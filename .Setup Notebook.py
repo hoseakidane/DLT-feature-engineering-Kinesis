@@ -26,10 +26,10 @@ dbutils.widgets.text("aws_secret_key", "Enter your secret key")
 
 import boto3
 
-# creates 2 kinesis streams programtically 
-# replace the following four variables with the info about your kinesis stream
+# replace the following four variables with the info about your kinesis stream. You can also create kinesis streams from the aws console.
 # You may hard-code for development but using secret scopes is recommended
 
+# creates two kinesis streams programtically 
 STREAM_NAME1 = dbutils.widgets.get('STREAM_NAME1')
 STREAM_NAME2 = dbutils.widgets.get('STREAM_NAME2')
 REGION_NAME = dbutils.widgets.get('REGION_NAME')
@@ -41,7 +41,7 @@ session = boto3.Session(
     aws_secret_access_key=aws_secret_key,
     region_name=REGION_NAME
 )
-# creating streams in root account instead of iam user for some reason (need to fix)
+
 kinesis = session.client('kinesis')
 kinesis.create_stream(StreamName=STREAM_NAME1, ShardCount=1)
 kinesis.create_stream(StreamName=STREAM_NAME2, ShardCount=1)

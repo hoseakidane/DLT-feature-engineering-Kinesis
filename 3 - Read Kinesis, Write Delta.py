@@ -12,6 +12,7 @@ from pyspark.sql import functions as F
 from pyspark.sql.types import *
 from datetime import datetime
 
+# replace with your stream names
 STREAM_NAME1 = 
 STREAM_NAME2 = 
 REGION_NAME = 

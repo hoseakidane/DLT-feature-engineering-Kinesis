@@ -68,6 +68,6 @@ AS
 CREATE OR REFRESH STREAMING LIVE TABLE model_bias_gold
 COMMENT "the most recent model bias average for each city"
 TBLPROPERTIES ("myCompanyPipeline.quality" = "gold")
-AS SELECT City, max_by(model_bias, newest_timestamp) AS most_recent_model_bias
-FROM STREAM(LIVE.average_bias_per_city_per_window)
-GROUP BY city
+as select City, max_by(model_bias, newest_timestamp) as most_recent_model_bias
+from STREAM(LIVE.average_bias_per_city_per_window)
+group by city
